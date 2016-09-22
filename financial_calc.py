@@ -33,6 +33,34 @@ def getPV_Growing_Perpetuity():
 	g = finCore.process_percent_input(raw_input("Enter constant grow rate (g):"))
 	finCore.pv_growing_perpetuity(c,r,g)
 
+def getPV_Ordinary_Annuity():
+	pmt =  finCore.process_input(int(raw_input("Enter equal periodic payment (PMT):")))
+	r = finCore.process_percent_input(int(raw_input("Enter periodic discout rate (R)%:")))
+	n = finCore.process_input(int(raw_input("Enter number of periods (n):")))
+	finCore.pv_ordinary_annuity(pmt,r,n)
+
+def getFV_Ordinary_Annuity():
+	pmt = finCore.process_input(raw_input("Enter equal periodic payment (PMT):"))
+	r = finCore.process_percent_input(raw_input("Enter periodic discout rate (R)%:"))
+	n = finCore.process_input(raw_input("Enter number of periods (n):"))
+	finCore.fv_ordinary_annuity()
+
+def getEAR_Estimation():
+	apr = finCore.process_percent_input(raw_input("Enter annual persentage rate (APM):%"))
+	m = finCore.process_input(raw_input("Enter compunding frequency within one year (m):"))
+	finCore.ear_estimation(apr,m)
+
+def getREffective_Estimation():
+	apr1 = finCore.process_percent_input(raw_input("Enter annual persentage rate (APM1)%:"))
+	m1 = finCore.process_input(raw_input("Enter compunding frequency (m1):"))
+	m2 = finCore.process_input(raw_input("Enter compunding frequency (m2):"))
+	finCore.reffective_estimation(apr1,m1,m2)
+
+def getCont_Compound_Rate():
+	apr = finCore.process_percent_input(raw_input("Enter annual persentage rate (APM1)%:"))
+	m = finCore.process_input(raw_input("Enter compunding frequency (m):"))
+	finCore.cont_compound_rate(apr,m)
+
 
 if operation_number == "1":
 	getPV_F()
@@ -41,15 +69,15 @@ elif operation_number == "2":
 elif operation_number == "3":
 	getPV_Growing_Perpetuity()
 elif operation_number == "4":
-	finCore.pv_ordinary_annuity()
+	getPV_Ordinary_Annuity()
 elif operation_number == "5":
-	finCore.fv_ordinary_annuity()
+	getFV_Ordinary_Annuity()
 elif operation_number == "6":
-	finCore.ear_estimation()
+	getEAR_Estimation()
 elif operation_number == "7":
-	finCore.reffective_estimation()
+	getREffective_Estimation()
 elif operation_number == "8":
-	finCore.cont_compound_rate()
+	getCont_Compound_Rate()
 else:
 	"Option you've choosen doesn't exist"
 

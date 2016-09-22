@@ -83,10 +83,7 @@ class FinanceCore(object):
 	R - periodic discout rate
 	n - number of periods
 	'''
-	def pv_ordinary_annuity(self):
-		pmt =  self.process_input(int(raw_input("Enter equal periodic payment (PMT):")))
-		r = self.process_percent_input(int(raw_input("Enter periodic discout rate (R)%:")))
-		n = self.process_input(int(raw_input("Enter number of periods (n):")))
+	def pv_ordinary_annuity(self,pmt,r,n):
 
 		if(self.input_is_valid([pmt,r,n])):
 			print (pmt/r)*(1 - 1/(1+r)**n)
@@ -101,11 +98,8 @@ class FinanceCore(object):
 	R - periodic discout rate
 	n - number of periods
 	'''
-	def fv_ordinary_annuity(self):
-		pmt = self.process_input(raw_input("Enter equal periodic payment (PMT):"))
-		r = self.process_percent_input(raw_input("Enter periodic discout rate (R)%:"))
-		n = self.process_input(raw_input("Enter number of periods (n):"))
-		
+	def fv_ordinary_annuity(self,pmt,r,n):
+				
 		if(self.input_is_valid([pmt,r,n])):
 			print (pmt/r)*((1+r)**n -1)
 		else:
@@ -118,9 +112,7 @@ class FinanceCore(object):
 	APR - annual persentage rate
 	m - compunding frequency within one year
 	'''
-	def ear_estimation(self):
-		apr = self.process_percent_input(raw_input("Enter annual persentage rate (APM):%"))
-		m = self.process_input(raw_input("Enter compunding frequency within one year (m):"))
+	def ear_estimation(self, apr, m):
 
 		if(self.input_is_valid([apr,m])):
 			print (1+apr/m)**m - 1
@@ -135,10 +127,7 @@ class FinanceCore(object):
 	APR - annual persentage rate
 	m1,m2 - compunding frequencies
 	'''
-	def reffective_estimation(self):
-		apr1 = self.process_percent_input(raw_input("Enter annual persentage rate (APM1)%:"))
-		m1 = self.process_input(raw_input("Enter compunding frequency (m1):"))
-		m2 = self.process_input(raw_input("Enter compunding frequency (m2):"))
+	def reffective_estimation(self,apr1,m1,m2):
 
 		if(self.input_is_valid([apr,m1,m2])):
 			print (1+apr/m1)**m1/m2 - 1
@@ -152,9 +141,7 @@ class FinanceCore(object):
 	APR - annual persentage rate
 	m - compunding frequency per year
 	'''
-	def cont_compound_rate(self):
-		apr = self.process_percent_input(raw_input("Enter annual persentage rate (APM1)%:"))
-		m = self.process_input(raw_input("Enter compunding frequency (m):"))
+	def cont_compound_rate(self, arp, m):
 
 		if(self.input_is_valid([apr,m])):
 			print m*math.log(1+arp/m)
