@@ -8,24 +8,30 @@ def history():
     showinfo('recent history', message = hist)
 
 def makemenu(win):
-    top = Menu(win)
-    win.config(menu=top)
+    top = Menu(win)    
     
+    # creates pulldown menu
     file = Menu(top)
     file.add_command(label='History', command=history, underline=0)
-    top.add_cascade(label='File', menu=file, underline=0)
-    
+    top.add_cascade(label='File', menu=file, underline=0)    
 
+    win.config(menu=top)
+        
+
+# a tkinter app window called 'root' is created
 root = Tk()
 root.title('Calculator')
 makemenu(root)
 
+# a global variable that holds the entire string typed by the user
 equa = ""
 
 equation = StringVar()
 
+# the value of equation is passed over to the Label widget through the textvariable option
 calculation = Label(root, textvariable = equation, height = 7)
 
+# updating the value of equation 
 equation.set("Enter your equation:")
 
 calculation.grid(columnspan = 4)
@@ -98,4 +104,5 @@ Equal.grid(row = 4, column = 2)
 Clear = Button(root, text = "C", width = 6, height = 3, command = clear)
 Clear.grid(row = 4, column = 0)
 
+# starts the tkinter event loop
 root.mainloop()
